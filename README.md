@@ -20,7 +20,8 @@ This repository contains our MLBA end-term group project focused on predicting p
 - `src/`: Modular reusable Python scripts for preprocessing, model training, and evaluation.
 - `data/`: Contains the dataset (add if permitted by your institution).
 
-📈 Results Summary
+##📈 Results Summary
+
 Logistic Regression Accuracy: ~94%
 
 Logistic Regression + SMOTE Recall: Increased from 45% to 91%
