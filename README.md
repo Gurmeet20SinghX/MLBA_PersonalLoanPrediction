@@ -21,9 +21,11 @@ This repository contains our MLBA end-term group project focused on predicting p
 - `src/`: Modular reusable Python scripts for preprocessing, model training, and evaluation.
 - `data/`: Contains the dataset (add if permitted by your institution).
 
-## 🚀 How to Run
+📈 Results Summary
+Logistic Regression Accuracy: ~94%
 
-1️⃣ Clone the repository:
-```bash
-git clone https://github.com/yourusername/MLBA_PersonalLoanPrediction.git
-cd MLBA_PersonalLoanPrediction
+Logistic Regression + SMOTE Recall: Increased from 45% to 91%
+
+Decision Tree Accuracy: ~96% with higher recall and F1-score
+
+AUC: ~0.96 indicating strong classification ability
