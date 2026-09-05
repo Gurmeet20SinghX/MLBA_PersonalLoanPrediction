@@ -1,103 +1,108 @@
-# Personal Loan Acceptance Prediction
+# Job Market Analytics: Salary Prediction & Location Preference Modelling
 
-A machine learning project focused on predicting whether a customer is likely to accept a personal loan offer. The project combines exploratory data analysis, feature preparation, class-imbalance handling, supervised classification, model evaluation, and business interpretation.
+A capstone analytics project using machine learning and statistical analysis to study salary determinants and Delhi/NCR location preference in the Indian job market.
 
-## Project Objective
+> **Academic project:** Capstone II — Analytics, Great Lakes Institute of Management  
+> **Team project:** Gurmeet Singh and team
 
-Banks and financial institutions can use customer-level data to identify prospects who are more likely to accept relevant loan offers. The objective of this project is to build and compare classification models that predict personal-loan acceptance and translate model findings into practical business insights.
+## Executive Overview
 
-## Business Problem
+The project addresses two related business problems:
 
-The project addresses a common banking analytics problem:
+1. **Salary Prediction (Regression):** estimate candidate salary using experience, education, skills, location and functional area.
+2. **Location Preference (Classification):** predict whether a candidate prefers Delhi/NCR to support targeted talent acquisition and workforce-planning decisions.
 
-> **Given a customer's demographic, financial, and product-ownership information, can we predict whether the customer will accept a personal loan offer?**
+The final analysis works from a large job-seeker dataset and applies a reproducible data-quality pipeline, exploratory analysis, NLP-based feature engineering, statistical validation, supervised learning, class-imbalance handling and external validation.
 
-A reliable prediction model can help improve customer targeting, reduce unnecessary outreach, and support more data-driven campaign decisions.
+## Data & Processing
 
-## Dataset
+- Initial records: **907,675**
+- Valid records after cleaning/outlier controls: **559,332**
+- Modelling sample: **50,000** using stratified random sampling
+- Raw variables: **17**
+- Engineered features: **121+**, including TF-IDF skill features and NLP-derived seniority
+- Key controls included age/experience validation, salary cleaning, missing-value treatment, city standardisation and target-leakage prevention.
 
-The project uses a bank customer dataset containing demographic, financial, and banking-product attributes. The target variable represents personal-loan acceptance.
+## Analytics Approach
 
-The dataset is included in the repository as `bankloan.xlsx`.
+### Exploratory & Statistical Analysis
 
-## Approach
+- Univariate and bivariate analysis
+- Salary distribution and experience analysis
+- Education and geographic salary comparisons
+- Functional-area analysis
+- Delhi/NCR preference analysis
+- Chi-square tests for categorical associations
+- Correlation analysis
 
-1. **Data preparation** – inspect the dataset, handle data-quality issues, and prepare variables for modelling.
-2. **Exploratory Data Analysis (EDA)** – analyse customer characteristics and relationships with loan acceptance.
-3. **Feature preparation** – select and transform relevant predictors for classification.
-4. **Class-imbalance treatment** – apply **SMOTE (Synthetic Minority Over-sampling Technique)** to improve the model's ability to identify the minority class.
-5. **Model development** – build and compare:
-   - Logistic Regression
-   - Logistic Regression with SMOTE
-   - Decision Tree with SMOTE
-   - Decision Tree with hyperparameter tuning
-6. **Model evaluation** – assess accuracy, recall, precision, F1-score, ROC-AUC, confusion matrix, and precision-recall performance.
-7. **Business interpretation** – translate model outputs into insights relevant to customer targeting and loan marketing decisions.
+### Feature Engineering
 
-## Key Results
+- Salary cleaning and log transformation
+- Work-experience parsing and categorisation
+- Education standardisation
+- City standardisation
+- NLP seniority extraction
+- **TF-IDF** vectorisation of skills
+- Leakage prevention by excluding variables derived from the target
 
-The analysis reported the following approximate outcomes:
+### Machine Learning
 
-| Model / Approach | Result |
-|---|---|
-| Logistic Regression | ~94% accuracy |
-| Logistic Regression + SMOTE | Recall improved from ~45% to ~91% |
-| Decision Tree | ~96% accuracy with strong recall/F1 performance |
-| ROC-AUC | ~0.96 |
+**Regression:** Linear/Ridge/ElasticNet/Huber and tree/boosting approaches were evaluated, with model selection focused on generalisation rather than training performance.
 
-The results demonstrate the importance of evaluating more than accuracy when the business objective includes identifying customers who are likely to accept the loan offer. SMOTE materially improved minority-class recall in the analysis.
+**Classification:** Logistic Regression, Decision Tree, Random Forest and Gradient Boosting approaches were evaluated, including **SMOTE** for class imbalance.
 
-## Technologies & Libraries
+## Key Findings
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Imbalanced-learn
-- Matplotlib
-- Seaborn
-- Jupyter Notebook
-- Excel (`.xlsx`)
+- Work experience was the strongest salary predictor, with correlation **r = 0.399**.
+- Delhi/NCR showed an estimated **15–20% salary premium** over several tier-2 locations in the analysed sample.
+- Education was materially associated with salary; the analysis estimated approximately **20–30% premium for Master's** and **40–50% for PhD** versus Bachelor's in the sample.
+- **75.96%** of the modelling sample indicated Delhi/NCR preference, creating a substantial class-imbalance challenge.
+- Current city and functional area were among the strongest predictors of location preference.
+- External validation exposed meaningful population/data shift, reinforcing the importance of testing model generalisation outside the training distribution.
 
-## Repository Contents
+## Model Performance Highlights
+
+### Salary Regression
+
+The final model selection prioritised robust generalisation. The conservative Gradient Boosting approach achieved approximately **R² = 0.235** on the held-out test set, with **RMSE ≈ 0.579**. The report notes that the lower performance reflects distribution differences and limited explanatory variables rather than simply a failure of model complexity.
+
+### Location Preference Classification
+
+Random Forest with SMOTE produced the strongest held-out F1 among the compared models at approximately **0.697**, while Gradient Boosting achieved approximately **73.8% test accuracy**. The final external test validation also showed that population shift can materially change apparent model performance.
+
+## Business Applications
+
+The analysis translates model outputs into practical use cases for:
+
+- **Recruitment:** data-driven salary ranges and candidate targeting
+- **HR analytics:** salary benchmarking, pay-band analysis and workforce planning
+- **Talent acquisition:** location-preference targeting and relocation strategy
+- **Career analytics:** scenario-based salary and location decisions
+
+## Limitations & Responsible Interpretation
+
+The project explicitly identifies data-distribution mismatch as a major limitation. The external test set had a very different Delhi/NCR preference distribution from the modelling sample, demonstrating why strong training performance should not automatically be treated as real-world performance.
+
+Predictions should therefore be interpreted as **sample-specific analytical outputs**, not universal salary or relocation guarantees.
+
+## Repository Structure
 
 ```text
 .
-├── MLBA Project Code.ipynb   # End-to-end analysis and modelling workflow
-├── bankloan.xlsx             # Project dataset
-├── README.md                 # Project documentation
-├── requirements.txt          # Python dependencies
-└── .gitignore                # Files excluded from version control
+├── README.md
+├── requirements.txt
+└── capstone/
+    ├── README.md
+    ├── MODELING_NOTES.md
+    ├── DATA_AND_REPRODUCIBILITY.md
+    └── report/
+        └── README.md
 ```
 
-## How to Run
+## Skills Demonstrated
 
-1. Clone or download the repository.
-2. Install the required Python packages:
+**Python · Pandas · NumPy · Scikit-learn · Statistical Testing · EDA · NLP · TF-IDF · Feature Engineering · Regression · Classification · SMOTE · Cross-Validation · Model Evaluation · Data Quality · Business Analytics · Data-driven Recommendations**
 
-```bash
-pip install -r requirements.txt
-```
+## Academic Source
 
-3. Open `MLBA Project Code.ipynb` in Jupyter Notebook, JupyterLab, or VS Code.
-4. Run the notebook from top to bottom to reproduce the analysis.
-
-## Portfolio Highlights
-
-This project demonstrates practical skills in:
-
-- Exploratory Data Analysis
-- Data Cleaning & Feature Preparation
-- Classification Modelling
-- Imbalanced Classification using SMOTE
-- Model Comparison
-- Hyperparameter Tuning
-- Model Evaluation
-- Data Visualization
-- Business-focused Interpretation
-
-## Academic Project
-
-**MLBA End-Term Group Project**
-
-Developed as part of the Data Science & Analytics curriculum at Great Lakes Institute of Management.
+Final report: *Job Market Analytics: Salary Prediction and Location Preference Modelling*, Capstone II — Analytics. The report identifies Gurmeet Singh as a member of Group 1. 
