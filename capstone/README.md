@@ -7,11 +7,11 @@
 This capstone analyses the Indian job market using predictive analytics to address two business questions:
 
 - Can candidate salary be estimated from experience, education, skills, location and functional area?
-- Can Delhi/NCR location preference be predicted to support recruitment and workforce-planning decisions?
+- Can Delhi/NCR location preference be predicted to support targeted talent acquisition and workforce-planning decisions?
 
 ### Dataset and pipeline
 
-The final report describes an initial dataset of **907,675 job-seeker records**. After city, age, salary and experience quality controls, **559,332 valid records** remained and a stratified sample of **50,000** was used for modelling. The feature set expanded from 17 raw variables to more than 120 engineered features, including TF-IDF skill features and NLP-derived seniority. fileciteturn19file0L68-L76
+The final report describes an initial dataset of **907,675 job-seeker records**. After city, age, salary and experience quality controls, **559,332 valid records** remained and a stratified sample of **50,000** was used for modelling. The feature set expanded from 17 raw variables to more than 120 engineered features, including TF-IDF skill features and NLP-derived seniority.
 
 ### Analytical workflow
 
@@ -27,22 +27,22 @@ The final report describes an initial dataset of **907,675 job-seeker records**.
 10. External test-set validation
 11. Business interpretation and recommendations
 
-The modelling code uses Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, SciPy and TF-IDF-based text processing. fileciteturn28file3L189-L243
+The modelling work uses Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, SciPy and TF-IDF-based text processing.
 
 ### Key analytical findings
 
 - Work experience was the strongest numeric predictor of salary (**r = 0.399**).
 - Delhi/NCR preference represented **75.96%** of the modelling sample, creating a substantial class-imbalance problem.
 - Current city and functional area showed strong associations with location preference.
-- The analysis found a meaningful relationship between education and salary, with higher education associated with higher salary in the sample. fileciteturn21file11L950-L981
+- Higher education was associated with higher salary in the analysed sample.
 
 ### Modelling & validation
 
-The project evaluates multiple regression and classification approaches and uses cross-validation to compare generalisation. For classification, SMOTE was used to address the 3:1 class imbalance. The final report also documents external validation, where the test population had a materially different NCR-preference distribution; this was treated as a data-shift/generalisation issue rather than hidden or ignored. fileciteturn21file4L417-L457
+The project evaluates multiple regression and classification approaches and uses cross-validation to compare generalisation. For classification, SMOTE was used to address the 3:1 class imbalance. The final report also documents external validation, where the test population had a materially different NCR-preference distribution; this was treated as a data-shift/generalisation issue rather than hidden or ignored.
 
 ### Important result
 
-The final report identifies **Gradient Boosting** as the strongest conservative regression approach, with approximately **R² = 0.235** on the held-out test set. For location classification, **Random Forest with SMOTE** produced the strongest held-out F1 among the compared models at approximately **0.697**. fileciteturn21file9L801-L879
+The final report identifies **Gradient Boosting** as the strongest conservative regression approach, with approximately **R² = 0.235** on the held-out test set. For location classification, **Random Forest with SMOTE** produced the strongest held-out F1 among the compared models at approximately **0.697**.
 
 ### Business value
 
@@ -53,8 +53,8 @@ The project translates technical analysis into business applications for:
 - workforce planning and location strategy;
 - career and relocation decision support.
 
-The report provides specific recommendations for HR teams, recruiters and workforce planners based on the observed salary and location patterns. fileciteturn19file1L124-L149
+### Academic project
 
-### Repository note
-
-This is an academic group capstone. Gurmeet Singh is listed as a member of Group 1 in the final report. fileciteturn19file0L3-L12
+**Capstone II — Analytics**  
+Great Lakes Institute of Management  
+Group 1 — Gurmeet Singh and team
